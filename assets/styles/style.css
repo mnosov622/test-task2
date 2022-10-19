@@ -98,6 +98,9 @@ img {
     border-radius: 16px 0px 0px 16px;
     background-image: url("../img/AdobeStock_168443825 1.jpg");
   }
+  .card__time-available {
+    margin-left: -185px;
+  }
 }
 
 .card__image {
@@ -237,7 +240,7 @@ img {
   color: #FFFFFF;
 }
 
-.card__hidden-times {
+.card__times-hidden {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -246,6 +249,12 @@ img {
   height: 0;
   -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
+  background-color: red;
+}
+
+.open-hidden-cards {
+  height: 120px;
+  visibility: visible;
 }
 
 .expand-cards {

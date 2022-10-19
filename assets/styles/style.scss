@@ -79,6 +79,9 @@ img {
         background-image: url("../img/AdobeStock_168443825\ 1.jpg");
     }
     
+   .card__time-available {
+        margin-left: -185px;
+   }
 }
     
 .card__image {
@@ -187,12 +190,18 @@ img {
     }
 }
 
-.card__hidden-times {
+.card__times-hidden {
     display: flex;
     visibility: hidden;
     overflow: hidden;
     height: 0;
     transition: all .3s ease-in;
+    background-color: red;
+}
+
+.open-hidden-cards {
+    height: 120px;
+    visibility: visible;
 }
 
 .expand-cards {

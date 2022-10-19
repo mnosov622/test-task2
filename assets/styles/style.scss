@@ -1,0 +1,275 @@
+@import "./reset";
+
+
+body {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #4B4B4B;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+.container {
+    padding: 18px;
+}
+.card {
+    width: 341px;
+    height: 603px;
+    border: 0.3px solid #828282;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+@media screen and(min-width:1200px) {
+    .container {
+        margin: 0 auto;
+    }
+    .card {
+        width: 1070px;
+        height: 370px;
+        display: flex;
+        margin: 0 auto;
+        margin-bottom: 59px;
+    }
+    .card__inner {
+        display: flex;
+        flex-direction: column;
+
+        .card__title {
+            margin-top: 0px;
+            margin-bottom: 11px;
+            order: -1;
+            font-size: 26px;
+            line-height: 34px;
+            color: #000000;
+            max-width: 100%;
+        }
+        
+        .card__time {
+            margin-bottom: 9px;
+        }
+
+        .card__summary {
+            justify-content: unset;
+        }
+
+
+        .card__more-btn {
+            margin-left: 10px;
+        }
+        .card__descr__item {
+            display: inline;
+        }
+
+        .card__times {
+            justify-content: flex-start;
+        }
+    }
+
+    .card__image img{
+        width: 473px;
+        height: 369px;
+        border-radius: 16px 0px 0px 16px;
+        background-image: url("../img/AdobeStock_168443825\ 1.jpg");
+    }
+    
+}
+    
+.card__image {
+    width: 341px;
+    height: 220px;
+    position: relative;
+}
+
+.card__inner {
+    padding: 14px 12px;
+}
+
+.card__label {
+    width: 99px;
+    height: 35px;
+    background-color: #FED74B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    position: absolute;
+    top: 41px;
+    left:0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #3E3E3E;
+
+    &--new {
+        position: absolute;
+        top:0;
+        color:#fff;
+        background-color: #7553FF;
+        border-radius: 15px 0px 12px;
+    }
+}
+
+.card__time {
+    display: flex;
+    align-items: center;
+}
+
+.card__time-hours {
+    margin-left: 9px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #9E9E9E;
+}
+
+.card__title {
+    margin: 20px 0;
+    max-width: 317px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: #404040;
+}
+.card__descr {
+}
+.card__descr-item {
+    display: flex;
+    margin-bottom: 11px;
+    width: 369px;
+    &::before {
+        content: '';
+        display: block;
+        align-self: flex-start;
+        background: url('../img/icons/check-mark.svg') center no-repeat;
+        width: 16px;
+        height: 16px;
+        margin-right: 20px;
+    }
+}
+
+.card__times-available {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 35px;
+    * + * {
+        margin-left: 4px;
+    }
+}
+.card__times {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // margin-left: 35px;
+}
+
+.card__time-available {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 63px;
+    height: 24px;
+    background-color: #D9E8FF;
+    color: #343434;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: all .3s ease-in;
+
+    &:hover {
+        background: #6BA6FF;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        color: #FFFFFF;
+    }
+}
+
+.card__hidden-times {
+    display: flex;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    transition: all .3s ease-in;
+}
+
+.expand-cards {
+    visibility: visible;
+    height: 40px;
+}
+
+
+.card__moreTimes-btn {
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 63px;
+    height: 24px;
+    background-color: #D9E8FF;
+    color: #343434;
+    border-radius: 11px;
+    
+}
+
+.card__summary {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__price {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    line-height: 20px;
+    color: #000000;
+    position: relative;
+    word-break: break-all;
+}
+
+.card__total-price {
+    margin-left: 7px;
+}
+
+.card__pier-price {
+    font-size: 10px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.card__ruble-img {
+    width: 23px;
+    height: 25px;
+}
+
+
+.card__pier-price {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 20px;
+    color: #000000;
+    // position: absolute;
+    // bottom:18px;
+}
+.card__more-btn {
+    cursor: pointer;
+    width: 165px;
+    height: 44px;
+    background-color: #FED74B;
+    border: 0.5px solid #CBA500;
+    border-radius: 20px;
+    color: #404040;
+    transition: all .2s ease-in;
+
+    &--bg {
+        width: 193px;
+        height: 44px;
+        border: 0.5px solid #CBA500;
+        border-radius: 10px;
+    }
+}

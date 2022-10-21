@@ -1,0 +1,12 @@
+.tickets {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid  skyblue;
+    padding: 1%;
+}
+
+.tickets__time, .tickets__time-back, .tickets__count-btn, .summary   {
+    /* display: block; */
+    margin-top: 50px;
+}

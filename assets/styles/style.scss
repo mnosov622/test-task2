@@ -1,6 +1,5 @@
 @import "./reset";
 
-
 body {
     font-family: 'Open Sans';
     font-style: normal;
@@ -10,14 +9,14 @@ body {
 }
 
 img {
-    max-width: 100%;
+    // max-width: 100%;
     object-fit: cover;
-    height: auto;
 }
 
 .container {
     padding: 18px;
 }
+
 .card {
     width: 341px;
     height: 603px;
@@ -37,6 +36,7 @@ img {
         margin: 0 auto;
         margin-bottom: 59px;
     }
+
     .card__inner {
         display: flex;
         flex-direction: column;
@@ -72,12 +72,18 @@ img {
         }
     }
 
-    .card__image img{
-        width: 473px;
-        height: 369px;
+    .card__image {
+        width: 473px !important;
+        height: 369px !important;
         border-radius: 16px 0px 0px 16px;
-        background-image: url("../img/AdobeStock_168443825\ 1.jpg");
+        // background-image: url("../img/AdobeStock_168443825\ 1.jpg");
+        img {
+            width: 473px !important;
+            height: 369px !important;
+            border-radius: 16px 0px 0px 16px;
+        }
     }
+
     
    .card__time-available {
         margin-left: -185px;
@@ -108,7 +114,6 @@ img {
     font-size: 12px;
     font-weight: 600;
     color: #3E3E3E;
-
     &--new {
         position: absolute;
         top:0;
@@ -138,8 +143,7 @@ img {
     line-height: 22px;
     color: #404040;
 }
-.card__descr {
-}
+
 .card__descr-item {
     display: flex;
     margin-bottom: 11px;
@@ -163,6 +167,7 @@ img {
         margin-left: 4px;
     }
 }
+
 .card__times {
     display: flex;
     flex-wrap: wrap;
@@ -182,7 +187,6 @@ img {
     border-radius: 11px;
     cursor: pointer;
     transition: all .3s ease-in;
-
     &:hover {
         background: #6BA6FF;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -208,7 +212,6 @@ img {
     visibility: visible;
     height: 40px;
 }
-
 
 .card__moreTimes-btn {
     cursor: pointer;
@@ -255,7 +258,6 @@ img {
     height: 25px;
 }
 
-
 .card__pier-price {
     font-style: normal;
     font-weight: 400;
@@ -265,6 +267,7 @@ img {
     // position: absolute;
     // bottom:18px;
 }
+
 .card__more-btn {
     cursor: pointer;
     width: 165px;
@@ -274,8 +277,11 @@ img {
     border-radius: 20px;
     color: #404040;
     transition: all .2s ease-in;
-
-    &--bg {
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+    &--bg { 
         width: 193px;
         height: 44px;
         border: 0.5px solid #CBA500;

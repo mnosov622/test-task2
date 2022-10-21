@@ -22,10 +22,8 @@ body {
 }
 
 img {
-  max-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  height: auto;
 }
 
 .container {
@@ -92,11 +90,15 @@ img {
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
-  .card__image img {
-    width: 473px;
-    height: 369px;
+  .card__image {
+    width: 473px !important;
+    height: 369px !important;
     border-radius: 16px 0px 0px 16px;
-    background-image: url("../img/AdobeStock_168443825 1.jpg");
+  }
+  .card__image img {
+    width: 473px !important;
+    height: 369px !important;
+    border-radius: 16px 0px 0px 16px;
   }
   .card__time-available {
     margin-left: -185px;
@@ -338,6 +340,13 @@ img {
   color: #404040;
   -webkit-transition: all .2s ease-in;
   transition: all .2s ease-in;
+}
+
+.card__more-btn:hover {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+          box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
 }
 
 .card__more-btn--bg {

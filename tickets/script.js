@@ -17,8 +17,21 @@ let travelBack = false;
 let travelMinutes = "";
 let travelHours = "";
 
+function convertH2M(timeInHour){
+    var timeParts = timeInHour.split(":");
+    return Number(timeParts[0]) * 60 + Number(timeParts[1]);
+  }
+ 
+
 const timesForward = ["18:00", "18:30","18:45","19:00","19:15","21:00","21:00","21:30","22:00","22:30"]; 
 const timesBack = [ "18:30","18:45","19:00","19:15","19:35","21:50","21:55"]; 
+const minTimesArray = [];
+
+timesBack.forEach(time => {
+    minTimesArray.push(convertH2M(time));
+});
+
+console.log("Minutes array", minTimesArray);
 
 timeBack.style.display = "none";
 
@@ -75,11 +88,7 @@ route.addEventListener("change", () => {
 console.log("Initial array", timesBack);
 let sortedTimes = [];
 
-function convertH2M(timeInHour){
-    var timeParts = timeInHour.split(":");
-    return Number(timeParts[0]) * 60 + Number(timeParts[1]);
-  }
- 
+
   
 
 departureTime.addEventListener("change", (e) => {
@@ -88,8 +97,9 @@ departureTime.addEventListener("change", (e) => {
     
     let timeAsString = departureTime.value.substring(0, departureTime.value.indexOf("(").toString());
 
-    // var timeInMinutes = convertH2M(departureTime.value.substring(0, departureTime.value.indexOf("(")));
+    let timeInMinutes = convertH2M(departureTime.value.substring(0, departureTime.value.indexOf("(")));
 
+    console.log(timeInMinutes + 50);
 
     if(travelBack) {
         timesBack.forEach((time) => {

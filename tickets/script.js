@@ -158,11 +158,29 @@ ticketsForm.addEventListener("submit", (e)=> {
 
     let shipArrivalTimeTotal = (arrHour < 10 ? "0" : "") + arrHour.toString() + ":" + (arrMin < 10 ? "0" : "") + arrMin.toString();
 
+    let travelBackTimeAsString = travelBackTime.value.substring(0, travelBackTime.value.indexOf("(").toString());
+
+    let travelBackTimeInMinutes = convertH2M(travelBackTimeAsString);
+    let travelBackMin = travelBackTimeInMinutes % 60;
+    let travelBackH = (travelBackTimeInMinutes-travelBackMin)/60;
+    const travelBackArrTime = (travelBackH < 10 ? "0" : "") + travelBackH.toString() + ":" + (travelBackMin < 10 ? "0" : "") + travelBackMin.toString();
+
+    let travelBackTotal = travelBackTimeInMinutes + 50;
+    let arrBackMin = travelBackTotal % 60;
+    let arrBackHour = (travelBackTotal-arrBackMin)/60;
+
+    let travelBackTimeTotal = (arrBackHour < 10 ? "0" : "") + arrBackHour.toString() + ":" + (arrBackMin < 10 ? "0" : "") + arrBackMin.toString();
+
+
     summary.innerHTML += `Вы выбрали <b>${ticketsAmount.value} ${numWord(ticketsAmount.value, ["билет", "билета", "билетов"])}</b> по маршруту <b>${route.value}</b> стоимостью <b>${ticketPrice}р</b>.
     <br>
     Это путешествие займет у вас <b>${travelHours} ${travelMinutes} минут</b>.
     <br>
-    Теплоход  отправляется в <b>${depTime}</b>, а прибудет в <b>${shipArrivalTimeTotal}.</b>  
+    <br>
+    ${travelBack ? `Теплоход из <b>A в B</b>  отправляется в <b>${depTime}</b>, а прибудет в <b>${shipArrivalTimeTotal}.</b>` : `Теплоход отправляется в <b>${depTime}</b>, а прибудет в <b>${shipArrivalTimeTotal}.</b>`}
+    <br>
+    <br>
+    ${travelBack ? `  Теплоход из <b>B в A</b> отправляется в <b>${travelBackArrTime}</b>, а прибудет в <b>${travelBackTimeTotal}</b> ` : ""}
     `
     ;
 

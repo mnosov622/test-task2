@@ -1,3 +1,5 @@
+import {num_word} from "./helpers.js";
+
 const timeSelector = document.querySelector(".tickets__time-select");
 const destinationSelector = document.querySelector(".tickets__route");
 const timeBack = document.querySelector(".tickets__time-back");
@@ -23,8 +25,8 @@ function convertH2M(timeInHour){
   }
  
 
-const timesForward = ["18:00", "18:30","18:45","19:00","19:15","21:00","21:00","21:30","22:00","22:30"]; 
-const timesBack = [ "18:30","18:45","19:00","19:15","19:35","21:50","21:55"]; 
+const timesForward = ["18:00", "18:30","18:45","19:00","19:15","21:00"]; 
+const timesBack = [ "18:30","18:45","19:00","19:15", "19:35","21:50","21:55"]; 
 const minTimesArray = [];
 
 timesBack.forEach(time => {
@@ -35,24 +37,7 @@ console.log("Minutes array", minTimesArray);
 
 timeBack.style.display = "none";
 
-function num_word(value, words) {  
-	value = Math.abs(value) % 100; 
-	var num = value % 10;
 
-	if(value > 10 && value < 20) {
-        return words[2];
-    } 
-
-	if(num > 1 && num < 5) {
-        return words[1];
-    }
-
-	if(num == 1) {
-        return words[0];
-    }
-
-	return words[2];
-}
 
 
 const removeChilds = (parent) => {
@@ -62,9 +47,8 @@ const removeChilds = (parent) => {
 };
 
 
-
-
 route.addEventListener("change", () => {
+    summary.innerHTML = "";
     if(route.value === "из A в B и обратно в А") {
         timeBack.style.display = "block";
         travelBack = true;
@@ -74,9 +58,36 @@ route.addEventListener("change", () => {
         travelHours = `${Math.floor(travelTime / 60)} ${num_word(travelHours, ["часов", "часа", "час"])}`;
 
     }
+
+    else if (route.value === "из A в B") {
+        removeChilds(departureTime);
+        timesForward.forEach(timeForward => {
+            const timeOption = document.createElement("option");
+            timeOption.innerHTML = `${timeForward} (из A в B)`;
+            departureTime.appendChild(timeOption);
+        })
+        travelTime = 50;
+        travelBack = false;
+        timeBack.style.display = "none";
+        travelMinutes = travelTime;
+        travelHours = "";
+
+    }
     
     
     else {
+        removeChilds(departureTime);
+        travelTime = 50;
+        travelBack = false;
+        timeBack.style.display = "none";
+        travelMinutes = travelTime;
+        travelHours = "";
+
+        timesBack.forEach(timeBack => {
+            const timeOption = document.createElement("option");
+            timeOption.innerHTML = `${timeBack}(из B в A)`;
+            departureTime.appendChild(timeOption);
+        })
         travelTime = 50;
         travelBack = false;
         timeBack.style.display = "none";
@@ -89,36 +100,49 @@ console.log("Initial array", timesBack);
 let sortedTimes = [];
 
 
-  
-
 departureTime.addEventListener("change", (e) => {
     sortedTimes = [];
     removeChilds(travelBackTime);
     
     let timeAsString = departureTime.value.substring(0, departureTime.value.indexOf("(").toString());
 
-    let timeInMinutes = convertH2M(departureTime.value.substring(0, departureTime.value.indexOf("(")));
+    let timeInMinutes = convertH2M(timeAsString);
+    timeInMinutes+=50;
 
-    console.log(timeInMinutes + 50);
+    console.log("Time in minutes" , timeInMinutes);
 
-    if(travelBack) {
-        timesBack.forEach((time) => {
-            if(time > timeAsString) {
+        minTimesArray.forEach((time) => {
+            console.log(time);
+            if(time > timeInMinutes) {
                 sortedTimes.push(time);
             }
         });
 
         console.log("New array ", sortedTimes);
-    }
+
+        // let m = timeInMinutes % 60;
+        // let h = (timeInMinutes-m)/60;
+        
+        // const arrTime = (h < 10 ? "0" : "") + h.toString() + ":" + (m < 10 ? "0" : "") + m.toString();
     
+        // console.log("Ship departure time is", arrTime);
+        
     
-    sortedTimes.forEach(time => {
+    sortedTimes.forEach(sortedTime => {
+
+        let m = sortedTime % 60;
+        let h = (sortedTime-m)/60;
+        
+        let HHMM = (h < 10 ? "0" : "") + h.toString() + ":" + (m < 10 ? "0" : "") + m.toString();
+        console.log("Modified time", HHMM);
+
         const timeOption = document.createElement("option");
-        timeOption.innerHTML = time;
+        timeOption.innerHTML = `${HHMM}(из B в A)`;
         travelBackTime.appendChild(timeOption);
 
-        console.log("Time option", timeOption);
     })
+    
+    
 
     if(sortedTimes.length === 0) {
         console.log("Nothing in ther");
@@ -144,11 +168,11 @@ departureTime.addEventListener("change", (e) => {
     ticketsAmount.addEventListener("change", () => {
         console.log("change");
         if(!travelBack) {
-            price = 700;
+            ticketPrice = 700;
             travelMinutes = travelTime;
             travelHours = "";
         }   
-        price = 1200;
+        ticketPrice = 1200;
     })
 
 ticketsForm.addEventListener("submit", (e)=> {
@@ -165,11 +189,41 @@ ticketsForm.addEventListener("submit", (e)=> {
 
     ticketPrice*=ticketsAmount.value;
     console.log(num_word(ticketsAmount,["билет", "билета", "билетов"]));
-  
+
+    // let departureTime1 = departureTime.value.substring(0, departureTime.value.indexOf("(").toString());
+
+    let timeAsString = departureTime.value.substring(0, departureTime.value.indexOf("(").toString());
+
+    let timeInMinutes = convertH2M(timeAsString);
+
+    
+    let m = timeInMinutes % 60;
+    let h = (timeInMinutes-m)/60;
+    
+    const depTime = (h < 10 ? "0" : "") + h.toString() + ":" + (m < 10 ? "0" : "") + m.toString();
+
+    let shipArrivalTime = timeInMinutes + 50;
+
+    let arrMin = shipArrivalTime % 60;
+    let arrHour = (shipArrivalTime-arrMin)/60;
+
+    let shipArrivalTimeTotal = (arrHour < 10 ? "0" : "") + arrHour.toString() + ":" + (arrMin < 10 ? "0" : "") + arrMin.toString();
+        // const travelBack = travelBackTime.value.substring(0, travelBackTime.value.indexOf("(").toString());
+        // let arrivalTimeMinutes = convertH2M(travelBack);
+        // if(travelBack) {
+        //     arrivalTimeMinutes+=50;
+        // }
+
+        // let minArrival = arrivalTimeMinutes % 60;
+        // let hArrival = (arrivalTimeMinutes-minArrival)/60;
+        
+        // const arrTime = (hArrival < 10 ? "0" : "") + hArrival.toString() + ":" + (minArrival < 10 ? "0" : "") + minArrival.toString();
+
     summary.innerHTML += `Вы выбрали <b>${ticketsAmount.value} ${num_word(ticketsAmount.value, ["билет", "билета", "билетов"])}</b> по маршруту <b>${route.value}</b> стоимостью <b>${ticketPrice}р</b>.
     <br>
     Это путешествие займет у вас <b>${travelHours} ${travelMinutes} минут</b>.
     <br>
+    Теплоход  отправляется в <b>${depTime}</b>, а прибудет в <b>${shipArrivalTimeTotal}.</b>  
     `
     ;
 

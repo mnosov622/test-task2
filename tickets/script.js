@@ -1,7 +1,5 @@
 import {numWord, convertH2M, removeChilds} from "./helpers.js";
 
-
-
 const timeBack = document.querySelector(".tickets__time-back");
 const ticketsForm = document.querySelector(".tickets__form");
 const summary = document.querySelector(".summary");
@@ -123,14 +121,15 @@ departureTime.addEventListener("change", (e) => {
         
 })
 
-    ticketsAmount.addEventListener("change", () => {
-        if(!travelBack) {
-            ticketPrice = 700;
-            travelMinutes = travelTime;
-            travelHours = "";
-        }   
-        ticketPrice = 1200;
-    })
+ticketsAmount.addEventListener("change", () => {
+    if(!travelBack) {
+        ticketPrice = 700;
+        travelMinutes = travelTime;
+        travelHours = "";
+    }
+
+    ticketPrice = 1200;
+})
 
 ticketsForm.addEventListener("submit", (e)=> {
     e.preventDefault();

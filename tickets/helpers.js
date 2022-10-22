@@ -1,6 +1,6 @@
 function numWord(value, words) {  
 	value = Math.abs(value) % 100; 
-	var num = value % 10;
+	let num = value % 10;
 
 	if(value > 10 && value < 20) {
         return words[2];
@@ -17,12 +17,12 @@ function numWord(value, words) {
 	return words[2];
 }
 
-function convertH2M(timeInHour){
-    var timeParts = timeInHour.split(":");
+function convertH2M(timeInHour) {
+    let timeParts = timeInHour.split(":");
     return Number(timeParts[0]) * 60 + Number(timeParts[1]);
 }
 
-const removeChilds = (parent) => {
+function removeChilds(parent) {
     while (parent.lastChild) {
         parent.removeChild(parent.lastChild);
     }

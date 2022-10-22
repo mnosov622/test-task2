@@ -16,3 +16,14 @@ export function num_word(value, words) {
 
 	return words[2];
 }
+
+export function convertH2M(timeInHour){
+    var timeParts = timeInHour.split(":");
+    return Number(timeParts[0]) * 60 + Number(timeParts[1]);
+}
+
+export const removeChilds = (parent) => {
+    while (parent.lastChild) {
+        parent.removeChild(parent.lastChild);
+    }
+};

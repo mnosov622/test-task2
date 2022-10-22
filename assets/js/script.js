@@ -1,72 +1,42 @@
-// const cardTimes = document.querySelectorAll(".card__times-available");
-// cardTimes.forEach(cardTime => {
-//     const timesAvailable = cardTime.querySelectorAll(".card__time-available");
-//     const hiddenTimes = cardTime.querySelector(".card__hidden-times");
-//     const expandTimesBtn = cardTime.querySelector(".card__moreTimes-btn");
-    
-//     const amountOfTimes = timesAvailable.length;
 
-    
-// const hiddenTimesArray = [];
-// if(expandTimesBtn) {
-//     expandTimesBtn.style.display = "flex";
-// }
+const cards = document.querySelectorAll(".card");
 
-// if(amountOfTimes > 4 ) {
-//     console.log("More");   
-//     for(let i=4; i< amountOfTimes; i++) {
-//         console.log(timesAvailable[i] || "No times");
-//         timesAvailable[i].style.display = "none";
-//         // timesAvailable[i].className = ""
-//         hiddenTimesArray.push(timesAvailable[i]);
-//         hiddenTimes.appendChild(timesAvailable[i]);
-//         // console.log(timesAvailable[timesAvailable.length - 1]);
-//     }
-// }
+cards.forEach(card => {
 
-// else {
-//     console.log("it's okay");
-// }
+    const cardTimesAvailable = card.querySelectorAll(".card__times-available");
 
-// console.log(hiddenTimesArray);
+    cardTimesAvailable.forEach(cardTimeAvailable => {
+        const timeCards = cardTimeAvailable.querySelectorAll(".card__time-available");
+        const expandMoreBtn = cardTimeAvailable.querySelector(".card__moreTimes-btn");
+        const hiddenTimes = cardTimeAvailable.querySelectorAll(".card__times-hidden");
 
-// if(expandTimesBtn) {
-
-//     expandTimesBtn.addEventListener('click', () => {
-//         for(let i=0; i<amountOfTimes; i++) {
-//             timesAvailable[i].style.display = "flex";
-//         }
+        const hiddenTimesArray = [];
         
-//         hiddenTimes.classList.add("expand-cards");
-//     })
-// }
-
-// })
-
-const cardTimesAvailable = document.querySelectorAll(".card__times-available");
-cardTimesAvailable.forEach(cardTimeAvailable => {
-    const timeCards = cardTimeAvailable.querySelectorAll(".card__time-available");
-    const expandMoreBtn = cardTimeAvailable.querySelector(".card__moreTimes-btn");
-    const hiddenTimes = cardTimeAvailable.querySelectorAll(".card__times-hidden");
-
-    const hiddenTimesArray = [];
-
-    if(timeCards.length > 4 && expandMoreBtn) {
-        expandMoreBtn.style.display = "block";
-        for(let i=4; i < timeCards.length; i++) {
-            hiddenTimesArray.push(timeCards[i]);
-            timeCards[i].style.display = "block";
+        if(timeCards.length > 3 && expandMoreBtn) {
+            expandMoreBtn.style.display = "block";
+            console.log("cards more than 3");
+            for(let i = 3; i < timeCards.length; i++) {
+                hiddenTimesArray.push(timeCards[i]);
+                
+                hiddenTimes.forEach(hidden => {
+                    hidden.appendChild(timeCards[i]); 
+                    hidden.style.display = "none";  
+                })
+            }
             
-            hiddenTimes.forEach(hidden => {
-                hidden.appendChild(timeCards[i]);   
-            })
+            
         }
+
         expandMoreBtn.addEventListener("click", () => {
-            hiddenTimes.classList.add("open-hidden-cards");
+        expandMoreBtn.style.display = "none";
+        card.classList.add('add-height');
+        hiddenTimes.forEach(hiddenTime => {
+            hiddenTime.classList.add("open-hidden-cards");
+            hiddenTime.style.display = "flex";
         })
-        
-    }
-
-
+    })
+    
     console.log("Hidden times" , hiddenTimes);
+})
+
 })

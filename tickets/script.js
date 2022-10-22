@@ -1,4 +1,6 @@
-import {num_word, convertH2M, removeChilds} from "./helpers.js";
+import {numWord, convertH2M, removeChilds} from "./helpers.js";
+
+
 
 const timeBack = document.querySelector(".tickets__time-back");
 const ticketsForm = document.querySelector(".tickets__form");
@@ -7,7 +9,10 @@ const route = document.querySelector("#route");
 const departureTime = document.querySelector("#time");
 const travelBackTime = document.querySelector("#time1");
 const ticketsAmount = document.querySelector("#num");
+const localZone = document.querySelector("#local");
+const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+localZone.innerHTML = localTimeZone;
 
 let ticketPrice = 700;
 let travelTime = 50;
@@ -35,7 +40,13 @@ route.addEventListener("change", () => {
         travelTime += 50;
 
         travelMinutes = travelTime % 60;
-        travelHours = `${Math.floor(travelTime / 60)} ${num_word(travelHours, ["часов", "часа", "час"])}`;
+        travelHours = `${Math.floor(travelTime / 60)} ${numWord(travelHours, ["часов", "часа", "час"])}`;
+        removeChilds(departureTime);
+        timesForward.forEach(timeForward => {
+            const timeOption = document.createElement("option");
+            timeOption.innerHTML = `${timeForward} (из A в B)`;
+            departureTime.appendChild(timeOption);
+        })
 
     }
 
@@ -76,7 +87,6 @@ route.addEventListener("change", () => {
 })
 
 
-
 departureTime.addEventListener("change", (e) => {
     sortedTimes = [];
     removeChilds(travelBackTime);
@@ -86,12 +96,11 @@ departureTime.addEventListener("change", (e) => {
     let timeInMinutes = convertH2M(timeAsString);
     timeInMinutes+=50;
 
-        minTimesArray.forEach((time) => {
-            console.log(time);
-            if(time > timeInMinutes) {
+    minTimesArray.forEach((time) => {
+        if(time > timeInMinutes) {
                 sortedTimes.push(time);
-            }
-        });
+        }
+    });
     
     sortedTimes.forEach(sortedTime => {
 
@@ -105,10 +114,9 @@ departureTime.addEventListener("change", (e) => {
 
     })
     
-
     if(sortedTimes.length === 0) {
         const timeOptionNotFound = document.createElement("option");
-        timeOptionNotFound.innerHTML = "К сожалению, на выбранное время нет обратного поезда";
+        timeOptionNotFound.innerHTML = "К сожалению, на выбранное время нет обратного теплохода";
         travelBackTime.style.disabled = true;
         travelBackTime.appendChild(timeOptionNotFound);
     }
@@ -116,7 +124,6 @@ departureTime.addEventListener("change", (e) => {
 })
 
     ticketsAmount.addEventListener("change", () => {
-        console.log("change");
         if(!travelBack) {
             ticketPrice = 700;
             travelMinutes = travelTime;
@@ -152,7 +159,7 @@ ticketsForm.addEventListener("submit", (e)=> {
 
     let shipArrivalTimeTotal = (arrHour < 10 ? "0" : "") + arrHour.toString() + ":" + (arrMin < 10 ? "0" : "") + arrMin.toString();
 
-    summary.innerHTML += `Вы выбрали <b>${ticketsAmount.value} ${num_word(ticketsAmount.value, ["билет", "билета", "билетов"])}</b> по маршруту <b>${route.value}</b> стоимостью <b>${ticketPrice}р</b>.
+    summary.innerHTML += `Вы выбрали <b>${ticketsAmount.value} ${numWord(ticketsAmount.value, ["билет", "билета", "билетов"])}</b> по маршруту <b>${route.value}</b> стоимостью <b>${ticketPrice}р</b>.
     <br>
     Это путешествие займет у вас <b>${travelHours} ${travelMinutes} минут</b>.
     <br>

@@ -1,309 +1,307 @@
 @import "./reset";
 
 body {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: #4B4B4B;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #4b4b4b;
 }
 
 img {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 .container {
-    padding: 18px;
+  padding: 18px;
 }
 
 .card {
-    width: 341px;
-    height: 603px;
-    border: 0.3px solid #828282;
-    border-radius: 16px;
-    margin-bottom: 30px;
+  width: 341px;
+  height: 603px;
+  border: 0.3px solid #828282;
+  border-radius: 16px;
+  margin-bottom: 30px;
 }
 
 @media screen and(min-width:1200px) {
-    .container {
-        margin: 0 auto;
-    }
-    .card {
-        width: 1070px;
-        height: 370px;
-        display: flex;
-        margin: 0 auto;
-        margin-bottom: 59px;
-    }
+  .container {
+    margin: 0 auto;
+  }
+  .card {
+    width: 1070px;
+    height: 370px;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 59px;
+  }
 
-    .card__inner {
-        display: flex;
-        flex-direction: column;
-        padding: 14px 20px !important;
-        
-        .card__title {
-            margin-top: 0px;
-            margin-bottom: 11px;
-            order: -1;
-            font-size: 26px;
-            line-height: 34px;
-            color: #000000;
-            max-width: 100%;
-        }
-        
-        .card__time {
-            margin-bottom: 15px;
-        }
+  .card__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 20px !important;
 
-        .card__summary {
-            justify-content: unset;
-            margin-top: 0;
-        }
-
-        .card__more-btn {
-            margin-left: 10px;
-        }
-        .card__descr__item {
-            display: inline;
-        }
-
-        .card__times {
-            justify-content: flex-start;
-        }
+    .card__title {
+      margin-top: 0px;
+      margin-bottom: 11px;
+      order: -1;
+      font-size: 26px;
+      line-height: 34px;
+      color: #000000;
+      max-width: 100%;
     }
 
-    .card__image {
-        width: 473px !important;
-        height: 369px !important;
-        border-radius: 16px 0px 0px 16px;
-        img {
-            width: 473px ;
-            height: 369px ;
-            border-radius: 16px 0px 0px 16px;
-        }
+    .card__time {
+      margin-bottom: 15px;
     }
 
-    
-   .card__time-available {
-        margin-left: -185px;
-   }
+    .card__summary {
+      justify-content: unset;
+      margin-top: 0;
+    }
+
+    .card__more-btn {
+      margin-left: 10px;
+    }
+    .card__descr__item {
+      display: inline;
+    }
+
+    .card__times {
+      justify-content: flex-start;
+    }
+  }
+
+  .card__image {
+    width: 473px !important;
+    height: 369px !important;
+    border-radius: 16px 0px 0px 16px;
+    img {
+      width: 473px;
+      height: 369px;
+      border-radius: 16px 0px 0px 16px;
+    }
+  }
+
+  .card__time-available {
+    margin-left: -185px;
+  }
 }
-    
+
 .card__image {
-    width: 341px;
-    height: 220px;
-    position: relative;
+  width: 341px;
+  height: 220px;
+  position: relative;
 }
 
 .card__inner {
-    padding: 14px 12px;
+  padding: 14px 12px;
 }
 
 .card__label {
-    width: 99px;
-    height: 35px;
-    background-color: #FED74B;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
+  width: 99px;
+  height: 35px;
+  background-color: #fed74b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  position: absolute;
+  top: 41px;
+  left: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3e3e3e;
+  &--new {
     position: absolute;
-    top: 41px;
-    left:0;
-    font-size: 12px;
-    font-weight: 600;
-    color: #3E3E3E;
-    &--new {
-        position: absolute;
-        top:0;
-        color:#fff;
-        background-color: #7553FF;
-        border-radius: 15px 0px 12px;
-    }
+    top: 0;
+    color: #fff;
+    background-color: #7553ff;
+    border-radius: 15px 0px 12px;
+  }
 }
 
 .card__time {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .card__time-hours {
-    margin-left: 9px;
-    font-weight: 400;
-    font-size: 12px;
-    color: #9E9E9E;
+  margin-left: 9px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #9e9e9e;
 }
 
 .card__title {
-    margin: 20px 0;
-    max-width: 317px;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 22px;
-    color: #404040;
+  margin: 20px 0;
+  max-width: 317px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  color: #404040;
 }
 
 .card__descr-item {
-    display: flex;
-    margin-bottom: 11px;
-    width: 369px;
-    &::before {
-        content: '';
-        display: block;
-        align-self: flex-start;
-        background: url('../img/icons/check-mark.svg') center no-repeat;
-        width: 16px;
-        height: 16px;
-        margin-right: 20px;
-    }
+  display: flex;
+  margin-bottom: 11px;
+  width: 369px;
+  &::before {
+    content: "";
+    display: block;
+    align-self: flex-start;
+    background: url("../img/icons/check-mark.svg") center no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-right: 20px;
+  }
 }
 
 .card__times-available {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:  wrap;
-    margin-left: 35px;
-    * + * {
-        margin-left: 4px;
-    }
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 35px;
+  * + * {
+    margin-left: 4px;
+  }
 }
 
 .card__times {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card__times-available {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .card__time-available {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 63px;
-    height: 24px;
-    background-color: #D9E8FF;
-    color: #343434;
-    border-radius: 11px;
-    cursor: pointer;
-    transition: all .3s ease-in;
-    &:hover {
-        background: #6BA6FF;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-        color: #FFFFFF;
-    }
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 63px;
+  height: 24px;
+  background-color: #d9e8ff;
+  color: #343434;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  &:hover {
+    background: #6ba6ff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+  }
 }
 
 .card__times-hidden {
-    visibility: hidden;
-    overflow: hidden;
-    height: 0;
-    transition: all .3s ease-in;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    transition: height .3s ease-in;
+  visibility: hidden;
+  overflow: hidden;
+  height: 0;
+  transition: all 0.3s ease-in;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  transition: height 0.3s ease-in;
 }
 
 .open-hidden-cards {
-    height: 50px;
-    visibility: visible;
+  height: 50px;
+  visibility: visible;
 }
 
 .card__moreTimes-btn {
-    cursor: pointer;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 63px;
-    height: 24px;
-    background-color: #D9E8FF;
-    color: #343434;
-    border-radius: 11px;
-    transition: all .3s ease-in;
-    &:hover {
-        color: #ffffff;
-        background-color: #6BA6FF;
-    }
-    
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 63px;
+  height: 24px;
+  background-color: #d9e8ff;
+  color: #343434;
+  border-radius: 11px;
+  transition: all 0.3s ease-in;
+  &:hover {
+    color: #ffffff;
+    background-color: #6ba6ff;
+  }
 }
 
 .card__summary {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card__price {
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-    line-height: 20px;
-    color: #000000;
-    position: relative;
-    word-break: break-all;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  line-height: 20px;
+  color: #000000;
+  position: relative;
+  word-break: break-all;
 }
 
 .card__pier-price {
-    font-size: 10px;
-    line-height: 20px;
-    color: #000000;
+  font-size: 10px;
+  line-height: 20px;
+  color: #000000;
 }
 
 .card__ruble-img {
-    width: 23px;
-    height: 25px;
+  width: 23px;
+  height: 25px;
 }
 
 .card__pier-price {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 20px;
-    color: #000000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 20px;
+  color: #000000;
 }
 
 .card__more-btn {
-    cursor: pointer;
-    width: 165px;
+  cursor: pointer;
+  width: 165px;
+  height: 44px;
+  background-color: #fed74b;
+  border: 0.5px solid #cba500;
+  border-radius: 20px;
+  color: #404040;
+  transition: all 0.2s ease-in;
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+  }
+  &--bg {
+    width: 193px;
     height: 44px;
-    background-color: #FED74B;
-    border: 0.5px solid #CBA500;
-    border-radius: 20px;
-    color: #404040;
-    transition: all .2s ease-in;
-    &:hover {
-        transform: translateY(-1px);
-        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
-    }
-    &--bg { 
-        width: 193px;
-        height: 44px;
-        border: 0.5px solid #CBA500;
-        border-radius: 10px;
-    }
+    border: 0.5px solid #cba500;
+    border-radius: 10px;
+  }
 }
 
 .add-height {
-    height: 650px;
+  height: 650px;
 }
 
 .second-task-btn {
-    position: absolute;
-    right: 50px;
-    cursor: pointer;
-    width: 165px;
-    height: 44px;
-    background-color: #FED74B;
-    border: 0.5px solid #CBA500;
-    border-radius: 20px;
-    color: #404040;
-    transition: all .2s ease-in;
-    &:hover {
-        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
-    }
+  position: absolute;
+  right: 50px;
+  cursor: pointer;
+  width: 165px;
+  height: 44px;
+  background-color: #fed74b;
+  border: 0.5px solid #cba500;
+  border-radius: 20px;
+  color: #404040;
+  transition: all 0.2s ease-in;
+  &:hover {
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
+  }
 }
